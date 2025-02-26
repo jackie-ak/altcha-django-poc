@@ -1,9 +1,9 @@
-# Altcha for Django login PoC
+# ALTCHA for Django login PoC
 
-This is a proof of concept for using the [Altcha](https://altcha.org) captcha for
+This is a proof of concept for using the [ALTCHA](https://altcha.org) captcha for
 the login form of a [Django](https://www.djangoproject.com/) application with a
 [Django REST framework](https://www.django-rest-framework.org/). At the same time
-this also demonstrates how to use Altcha in Django forms in general. But the
+this also demonstrates how to use ALTCHA in Django forms in general. But the
 intention for this proof of concept was to protect the login from brute force attacks,
 additional to other measures that should be in place
 (e.g. [axes](https://django-axes.readthedocs.io)).
@@ -18,15 +18,15 @@ what you need to do to start the demo:
 3. Go to the src/ folder and run `python manage.py runserver`
 
 Now you can go to http://localhost:8000/admin/ and log in, using the Django's
-admin login form, extended by the Altcha widget.
+admin login form, extended by the ALTCHA widget.
 
 ## General approach
 
-Integrating Altcha captchas in this scenario boils down to doing two things:
+Integrating ALTCHA captchas in this scenario boils down to doing two things:
 
 * providing an API endpoint that generates challenges, using the
   [altcha](https://pypi.org/project/altcha/) library
-* including the `<altcha-widget>` provided as a web component by Altcha
+* including the `<altcha-widget>` provided as a web component by ALTCHA
 
 Other scenarios are possible too. E.g. if the server generates the challenge
 on form load and provides the JSON data for the widget in-line, no separate
@@ -44,7 +44,7 @@ In more detail, this is what we did to our basic Django + DRF web app:
 * provide an `altcha/` endpoint through the `altcha_challenge` API view
   (see src/api/urls.py and api/views.py)
 * create a customized `AltchaAuthenticationForm` based on Django's default
-  `AuthenticationForm`, adding the Altcha verification before the actual
+  `AuthenticationForm`, adding the ALTCHA verification before the actual
   authentication verification (see src/auth/forms.py)
 * create a customized templated for the login page, based on Django's default
   login template. This is the file in src/templates/auth/altcha_login.html,
@@ -59,10 +59,10 @@ In more detail, this is what we did to our basic Django + DRF web app:
 
 ## References
 
-Further stuff to read up on, besides the Altcha website, listed in the intro:
+Further stuff to read up on, besides the ALTCHA website, listed in the intro:
 
-* Altcha docs: [Website Integration](https://altcha.org/docs/website-integration/)
-* Altcha docs: [Server TLDR](https://altcha.org/docs/server-tldr/), or
+* ALTCHA docs: [Website Integration](https://altcha.org/docs/website-integration/)
+* ALTCHA docs: [Server TLDR](https://altcha.org/docs/server-tldr/), or
   [Server Integration](https://altcha.org/docs/server-integration/) for more details
 * [ALTCHA Server Demo for Python](https://github.com/altcha-org/altcha-starter-py) repo
   on GitHub, specifically the
